@@ -20,9 +20,11 @@
 	     * @return the <var>n</var>th term in the Fibonacci sequence
 	     * @throws IllegalArgumentException if <code>n</code> is not a nonnegative number
 	     */
+		/*
 		public static void main(String[] args) {
 			System.out.println("Hello, World!"); 
 		}
+		*/
 	    public int getFibTerm(int n) {
 	        if (n <= 0) {
 	            throw new IllegalArgumentException(n + " is negative");

@@ -31,9 +31,12 @@ public class Ball {
     public Ball(String v, Color color) {
 		this(0, color);
         
-        double temp = Double.parseDouble(v);
-        volume = temp;
-        
+        try {
+            double temp = Double.parseDouble(v);
+            volume = temp;
+        } catch(NumberFormatException ex) {
+            
+        }
     } 
 
     /**

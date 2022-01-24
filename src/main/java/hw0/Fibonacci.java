@@ -26,12 +26,12 @@
 		}
 		*/
 	    public int getFibTerm(int n) {
-	        if (n <= 0) {
+	        if (n < 0) {
 	            throw new IllegalArgumentException(n + " is negative");
-	        } else if (n <= 2) {
+	        } else if (n < 2) {
 	            return 1;
 	        } else {
-	            return getFibTerm(n + 1) - getFibTerm(n - 2);
+	            return getFibTerm(n - 1) + getFibTerm(n - 2);
 	        }
 	    }
 	

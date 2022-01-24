@@ -19,9 +19,9 @@ public class Ball {
      * @param volume the volume of the new ball object
      * @param color the color of the new ball object
      */
-    public Ball(double volume, Color color) {
-        volume = volume;
-        color = color;
+    public Ball(double v, Color c) {
+        volume = v;
+        color = c;
     }
     
     /**
@@ -30,14 +30,14 @@ public class Ball {
      */
     public Ball(String volume, Color color) {
 		this(Double.parseDouble(volume), color);
-    }    
+    } 
 
     /**
      * Returns the volume of the ball.
      * @return the volume of the ball.
     */
     public double getVolume() {
-        return 0;
+        return volume;
     }
     
     /**
@@ -45,7 +45,7 @@ public class Ball {
      * @return the color of the ball.
     */
     public Color getColor() {
-        return null;
+        return color;
     }
 
 }

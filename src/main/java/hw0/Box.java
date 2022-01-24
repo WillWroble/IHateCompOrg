@@ -5,6 +5,7 @@ package hw0;
 
 import java.lang.Iterable;
 import java.util.Iterator;
+import java.util.*;
 
 /**
  * This is a container that can be used to contain Balls. The key
@@ -17,14 +18,19 @@ public class Box implements Iterable<Ball> {
      * ballContainer is used to internally store balls for this Box
      */
     private BallContainer ballContainer;
+    private List<Ball> sortedList;
+    private double maxVolume;
 
     /**
      * Constructor that creates a new box.
      * @param maxVolume Total volume of balls that this box can contain.
      */
-    public Box(double maxVolume) {
+    public Box(double mV) {
         // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        ballContainer = new BallContainer();
+        sortedList = new ArrayList<Ball>();
+        maxVolume = mV;
+        //throw new RuntimeException("Method not implemented");
     }
 
     /**
@@ -52,7 +58,21 @@ public class Box implements Iterable<Ball> {
      */
     public boolean add(Ball b) {
         // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        if(getVolume() + b.getVolume() > maxVolume) {
+            return false;
+        }
+        if(ballContainer.add(b)) {
+            for(int i = 0; i<sortedList.size(); i++) {
+                if(sortedList.get(i).getVolume() > b.getVolume()) {
+                    sortedList.add(i, b);
+                    return true;
+                }
+            }
+            sortedList.add(b);
+            return true;
+        }
+        return false;
+        //throw new RuntimeException("Method not implemented");
     }
 
     /**
@@ -64,7 +84,10 @@ public class Box implements Iterable<Ball> {
      */
     public Iterator<Ball> getBallsFromSmallest() {
         // Your code goes here.  Remove the exception after you're done.
-        throw new RuntimeException("Method not implemented");
+        return sortedList.iterator();
+        
+
+        //throw new RuntimeException("Method not implemented");
     }
 
     /**
@@ -79,7 +102,16 @@ public class Box implements Iterable<Ball> {
      * in the box.
      */
     public boolean remove(Ball b) {
-        return ballContainer.remove(b);
+
+        if(ballContainer.remove(b)) {
+            for (int i = 0; i<sortedList.size(); i++) {
+                if(sortedList.get(i) == b) {
+                    sortedList.remove(i);
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -104,6 +136,7 @@ public class Box implements Iterable<Ball> {
      */
     public void clear() {
         ballContainer.clear();
+        sortedList.clear();
     }
 
     /**

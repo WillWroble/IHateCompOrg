@@ -35,7 +35,7 @@ public class Ball {
             double temp = Double.parseDouble(v);
             volume = temp;
         } catch(NumberFormatException ex) {
-            
+            //do nothing
         }
     } 
 
